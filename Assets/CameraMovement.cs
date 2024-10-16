@@ -18,7 +18,7 @@ public class CameraMovement : MonoBehaviour
 
         transform.Translate(horizontal, vertical, scroll);  // y is the asix for the camera zoom
 
-        // Rotate Camera
+        // Rotate Camera using WASD
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(0, -rotateSpeed * Time.deltaTime, 0);  // Rotate around the y-axis in anti-clockwise
