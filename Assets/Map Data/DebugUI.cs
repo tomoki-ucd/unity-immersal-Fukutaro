@@ -28,9 +28,9 @@ public class DebugUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // Click Hide Button
-       // OncClickAsObservable() is used for a button
-       _hideButton.OnClickAsObservable()
+        // Click Hide Button
+        // OncClickAsObservable() is used for a button
+        _hideButton.OnClickAsObservable()
             .Subscribe(_ =>
             {
                 _debugUiParent.SetActive(false);
@@ -62,65 +62,74 @@ public class DebugUI : MonoBehaviour
 //                }      
 //            })
 
-          // Initialization
-         _starLocalPos = _plateauParentTransform.localPosition;
-         _starLocalEuler = _plateauParentTransform.localEulerAngles;
-         _sliderPosX.value = 0.5f;
-         _sliderPosY.value = 0.5f;
-         _sliderPosZ.value = 0.5f;
-         _sliderRotY.value = 0.5f;
-         _textPosX.text = _starLocalPos.x.ToString();
-         _textPosY.text = _starLocalPos.y.ToString();
-         _textPosZ.text = _starLocalPos.z.ToString();
-         _textRotY.text = _starLocalEuler.y.ToString();
+         // Initialization
+        _starLocalPos = _plateauParentTransform.localPosition;
+        _starLocalEuler = _plateauParentTransform.localEulerAngles;
+        _sliderPosX.value = 0.5f;
+        _sliderPosY.value = 0.5f;
+        _sliderPosZ.value = 0.5f;
+        _sliderRotY.value = 0.5f;
+        _textPosX.text = _starLocalPos.x.ToString();
+        _textPosY.text = _starLocalPos.y.ToString();
+        _textPosZ.text = _starLocalPos.z.ToString();
+        _textRotY.text = _starLocalEuler.y.ToString();
 
-         // Slider to control X direction
-         // What number is "value" likely to take? 0 to 1?
-         _sliderPosX.OnValueChangedAsObservable()
-             .Subscribe(value =>
-             {
-                 // Format the value
-                 // Mathf.Floor rounds down the value.
-                 // Matchf stands for Math Float, collection optimized for working with floating-point numbers.
-                 // When value is 0, it'll be -0.5 and when the value is 1, it'll be 0.5
-                 // 1. Center the value between -0.5 to 0.5
-                 // 2. Multiply by 100
-                 // 3. Rounds down
-                 // 4. Divide by 100
-                 // 5. Fit the value between -50 to 50
-                 var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
-                 _textPosX.text = SetPositionX(arrangeValue).ToString();
-             })
-             .AddTo(this);
+        // Slider to control X direction
+        // What number is "value" likely to take? 0 to 1?
+        _sliderPosX.OnValueChangedAsObservable()
+            .Subscribe(value =>
+            {
+                // Format the value
+                // Mathf.Floor rounds down the value.
+                // Matchf stands for Math Float, collection optimized for working with floating-point numbers.
+                // When value is 0, it'll be -0.5 and when the value is 1, it'll be 0.5
+                // 1. Center the value between -0.5 to 0.5
+                // 2. Multiply by 100
+                // 3. Rounds down
+                // 4. Divide by 100
+                // 5. Fit the value between -50 to 50
+                var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
+                _textPosX.text = SetPositionX(arrangeValue).ToString();
+            })
+            .AddTo(this);
 
-         // Slider to control Y direction
-         _sliderPosY.OnValueChangedAsObservable().
-             Subscribe(value => 
-             {
-                 var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
-                 _textPosY.text = SetPositionY(arrangeValue).ToString();
-             })
-             .AddTo(this);
+//        // Slider to control Y direction
+//        _sliderPosY.OnValueChangedAsObservable().
+//            Subscribe(value => 
+//            {
+//                var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
+//                _textPosY.text = SetPositionY(arrangeValue).ToString();
+//            })
+//            .AddTo(this);
+//
+//        // Slider to control Z direction
+//        _sliderPosZ.OnValueChangedAsObservable().
+//            Subscribe(value => 
+//            {
+//                // 'value' is between 0 to 1
+//                // value - 0.5 makes the range -0.5 to 0.5
+//                // (value - 0.5f) * 100, makinge the range -50 to 50, keeps the precision upto 0.01
+//                // Mathf.Floor(...) rounds down
+//                // ... / 100 makes the value back to -0.5 to 0.5
+//                // * POS_VALUE_RANGE_ABS, which is 50, maps the value ranging from -25 to 25
+//                var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
+//                _textPosZ.text = SetPositionZ(arrangeValue).ToString();
+//            })
+//            .AddTo(this);
+//
+//        // Slider to control the rotation around Y axis
+//        _sliderRotY.OnValueChangedAsObservable().
+//            Subscribe(value => 
+//            {
+//                var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * ROT_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
+//                _textRotY.text = SetRotationY(arrangeValue).ToString();
+//            })
+//            .AddTo(this);   
+    }
 
-         // Slider to control Z direction
-         _sliderPosZ.OnValueChangedAsObservable().
-             Subscribe(value => 
-             {
-                 var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
-                 _textPosZ.text = SetPositionZ(arrangeValue).ToString();
-             })
-             .AddTo(this);
-
-         // Slider to control the rotation around Y axis
-         _sliderRotY.OnValueChangedAsObservable().
-             Subscribe(value => 
-             {
-                 var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * ROT_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
-                 _textRotY.text = SetRotationY(arrangeValue).ToString();
-             })
-             .AddTo(this);   }
-
-
+    void Update(){
+        // Pub-SubでやってるからUpdate()は使わない
+    }
 
     /// <summary>
     /// Move the object in X direction by the given value
@@ -139,43 +148,38 @@ public class DebugUI : MonoBehaviour
     /// Move the object in Y direction by the given value
     /// </summary>
     /// <param name="y"> Coordinate </param>
-    private float SetPositionY(float y)
-    {
-        var currentPos = _plateauParentTransform.localPosition;
-        var pos = new Vector3(currentPos.x, _starLocalPos.y, currentPos.z);
-        pos.y += y;
-        _plateauParentTransform.localPosition = pos;
-        return pos.y;
-    }
+//    private float SetPositionY(float y)
+//    {
+//        var currentPos = _plateauParentTransform.localPosition;
+//        var pos = new Vector3(currentPos.x, _starLocalPos.y, currentPos.z);
+//        pos.y += y;
+//        _plateauParentTransform.localPosition = pos;
+//        return pos.y;
+//    }
+//
+//    /// <summary>
+//    /// Move the object in Z direction by the given value
+//    /// </summary>
+//    /// <param name="z"> Coordinate </param>
+//    private float SetPositionZ(float z)
+//    {
+//        var currentPos = _plateauParentTransform.localPosition;
+//        var pos = new Vector3(currentPos.x, _starLocalPos.y, currentPos.z);
+//        pos.z += z;
+//        _plateauParentTransform.localPosition = pos;
+//        return pos.z;
+//    }
+//
+//    /// <summary>
+//    /// Rotate the object around Y axis by the given value
+//    /// </summary>
+//    /// <param name="y"> Coordinate </param>
+//    private float SetRotationY(float y)
+//    {
+//        var eulerAngles = _starLocalEuler;
+//        eulerAngles.y += y;
+//        _plateauParentTransform.localEulerAngles = eulerAngles;
+//        return eulerAngles.y;
+//    }
 
-    /// <summary>
-    /// Move the object in Z direction by the given value
-    /// </summary>
-    /// <param name="z"> Coordinate </param>
-    private float SetPositionZ(float z)
-    {
-        var currentPos = _plateauParentTransform.localPosition;
-        var pos = new Vector3(currentPos.x, _starLocalPos.y, currentPos.z);
-        pos.z += z;
-        _plateauParentTransform.localPosition = pos;
-        return pos.z;
-    }
-
-    /// <summary>
-    /// Rotate the object around Y axis by the given value
-    /// </summary>
-    /// <param name="y"> Coordinate </param>
-    private float SetRotationY(float y)
-    {
-        var eulerAngles = _starLocalEuler;
-        eulerAngles.y += y;
-        _plateauParentTransform.localEulerAngles = eulerAngles;
-        return eulerAngles.y;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
