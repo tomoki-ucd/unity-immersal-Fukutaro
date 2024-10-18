@@ -221,14 +221,14 @@ RectTransform:
   m_GameObject: {fileID: 29600639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 0.40211987, y: 0.81442, z: 0.81442}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 547468412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.2, y: 29.8}
+  m_AnchoredPosition: {x: -16.1, y: 38.9}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &29600641
@@ -607,7 +607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 83.5, y: 33}
+  m_AnchoredPosition: {x: 79.9, y: 40.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &170076733
@@ -990,6 +990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 500426626}
   - component: {fileID: 500426625}
+  - component: {fileID: 500426627}
   m_Layer: 5
   m_Name: Slider-PosX
   m_TagString: Untagged
@@ -1067,9 +1068,25 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.4, y: 37.5}
+  m_AnchoredPosition: {x: 2.9, y: 44.3}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &500426627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500426624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33818e3e6682e416284ac3c842bf96e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 500426625}
+  text: {fileID: 151698261}
+  slideLowerLimit: 0
+  slideUpperLimit: 1
 --- !u!1 &506641453
 GameObject:
   m_ObjectHideFlags: 0

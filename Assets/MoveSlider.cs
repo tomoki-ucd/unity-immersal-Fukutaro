@@ -24,12 +24,12 @@ public class MoveSlider : MonoBehaviour
        {
 //            slider.value = slideSpeed * Time.deltaTime;
             slider.value += 0.1f;
-            text.text = slider.value.ToString();
+//            text.text = slider.value.ToString();
        }
        if(Input.GetKeyDown(KeyCode.L))
        {
             slider.value -= 0.1f;
-            text.text = slider.value.ToString();
+ //           text.text = slider.value.ToString();
        }
     }
 }

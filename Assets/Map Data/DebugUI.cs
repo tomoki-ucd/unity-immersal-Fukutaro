@@ -34,7 +34,7 @@ public class DebugUI : MonoBehaviour
             .Subscribe(_ =>
             {
                 _debugUiParent.SetActive(false);
-                _showButton.gameObject.SetActive(true); // What's the relationship between showButton and gameObject?
+//                _showButton.gameObject.SetActive(true); // What's the relationship between showButton and gameObject?
                                                         // Do I have to set a gameObject to _showButton?
                                                         // Maybe _showButton is a little button to swith show/hide a big show/hide button
                 _immersalMesh.SetActive(false);
@@ -46,7 +46,7 @@ public class DebugUI : MonoBehaviour
             .Subscribe(_ => 
             {
                 _debugUiParent.SetActive(true);
-                _showButton.gameObject.SetActive(false); // What's the relationship between showButton and gameObject?
+//                _showButton.gameObject.SetActive(false); // What's the relationship between showButton and gameObject?
                 _immersalMesh.SetActive(true);
             })
             .AddTo(this);
@@ -66,19 +66,20 @@ public class DebugUI : MonoBehaviour
         _starLocalPos = _plateauParentTransform.localPosition;
         _starLocalEuler = _plateauParentTransform.localEulerAngles;
         _sliderPosX.value = 0.5f;
-        _sliderPosY.value = 0.5f;
-        _sliderPosZ.value = 0.5f;
-        _sliderRotY.value = 0.5f;
+//        _sliderPosY.value = 0.5f;
+//        _sliderPosZ.value = 0.5f;
+//        _sliderRotY.value = 0.5f;
         _textPosX.text = _starLocalPos.x.ToString();
-        _textPosY.text = _starLocalPos.y.ToString();
-        _textPosZ.text = _starLocalPos.z.ToString();
-        _textRotY.text = _starLocalEuler.y.ToString();
+//        _textPosY.text = _starLocalPos.y.ToString();
+//        _textPosZ.text = _starLocalPos.z.ToString();
+//        _textRotY.text = _starLocalEuler.y.ToString();
 
         // Slider to control X direction
         // What number is "value" likely to take? 0 to 1?
         _sliderPosX.OnValueChangedAsObservable()
             .Subscribe(value =>
             {
+                Debug.Log("Slider was moved by " + value);
                 // Format the value
                 // Mathf.Floor rounds down the value.
                 // Matchf stands for Math Float, collection optimized for working with floating-point numbers.
