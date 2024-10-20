@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // To move camera, disable TrackedPoseDriver in the camera becuase it will update the camera position to the origin.
 public class CameraMovement : MonoBehaviour
@@ -10,6 +11,11 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If any Key is down
+        if(Input.anyKeyDown && EventSystem.current.currentSelectedGameObject != null){
+            // Clear the Selected UI element
+            EventSystem.current.SetSelectedGameObject(null);
+        }
         // Translate Camera
         // More frames are processed per second on higher performance hardware.
         float horizontal = Input.GetAxis("Horizontal") * TranslateSpeed * Time.deltaTime;
