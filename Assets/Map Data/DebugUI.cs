@@ -84,11 +84,11 @@ public class DebugUI : MonoBehaviour
                 // Matchf stands for Math Float, collection optimized for working with floating-point numbers.
                 // When value is 0, it'll be -0.5 and when the value is 1, it'll be 0.5
                 // 1. Center the value between -0.5 to 0.5
-                // 2. Multiply by 100
+                // 2. Multiply by 1000
                 // 3. Floor returns the closest integer
-                // 4. Divide by 100
+                // 4. Divide by 1000
                 // 5. Fit the value between -50 to 50
-                var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
+                var arrangeValue = Mathf.Floor((value - 0.5f) * 1000) / 1000 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
                 _textPosX.text = SetPositionX(arrangeValue).ToString();
             })
             .AddTo(this);
@@ -97,7 +97,7 @@ public class DebugUI : MonoBehaviour
         _sliderPosY.OnValueChangedAsObservable().
             Subscribe(value => 
             {
-                var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
+                var arrangeValue = Mathf.Floor((value - 0.5f) * 1000) / 1000 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
                 _textPosY.text = SetPositionY(arrangeValue).ToString();
             })
             .AddTo(this);
@@ -108,11 +108,11 @@ public class DebugUI : MonoBehaviour
             {
                 // 'value' is between 0 to 1
                 // value - 0.5 makes the range -0.5 to 0.5
-                // (value - 0.5f) * 100, makinge the range -50 to 50, keeps the precision upto 0.01
+                // (value - 0.5f) * 1000, makinge the range -50 to 50, keeps the precision upto 0.01
                 // Mathf.Floor(...) returns the closets integer
-                // ... / 100 makes the value back to -0.5 to 0.5
+                // ... / 1000 makes the value back to -0.5 to 0.5
                 // * POS_VALUE_RANGE_ABS, which is 50, maps the value ranging from -25 to 25
-                var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
+                var arrangeValue = Mathf.Floor((value - 0.5f) * 1000) / 1000 * POS_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
                 _textPosZ.text = SetPositionZ(arrangeValue).ToString();
             })
             .AddTo(this);
@@ -121,7 +121,7 @@ public class DebugUI : MonoBehaviour
         _sliderRotY.OnValueChangedAsObservable().
             Subscribe(value => 
             {
-                var arrangeValue = Mathf.Floor((value - 0.5f) * 100) / 100 * ROT_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
+                var arrangeValue = Mathf.Floor((value - 0.5f) * 1000) / 1000 * ROT_VALUE_RANGE_ABS;   // "float" is preferred than "var"?
                 _textRotY.text = SetRotationY(arrangeValue).ToString();
                 Debug.Log(_textRotY.text);
                 _textRotY.text = Mathf.FloorToInt((float.Parse(_textRotY.text))).ToString();
